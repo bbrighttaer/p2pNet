@@ -18,7 +18,7 @@ public class OutBound {
         try (Socket socket = new Socket(host, port)) {
             BufferedOutputStream outputStream = new BufferedOutputStream(socket.getOutputStream());
             PrintWriter writer = new PrintWriter(outputStream, true);
-            writer.println(mapper.writeValueAsString(message));
+            writer.println(new Encoder().enc2String(message));
         } catch (IOException e) {
             e.printStackTrace();
         }

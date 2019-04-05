@@ -28,4 +28,13 @@ public class Message {
     public String getDestinationId() {
         return destinationId;
     }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "senderId='" + senderId + '\'' +
+                ", destinationId='" + destinationId + '\'' +
+                ", message=" + message +
+                '}';
+    }
 }

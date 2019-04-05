@@ -1,5 +1,7 @@
 package com.bbrighttaer.socket;
 
+import java.io.IOException;
+
 public class Node implements IMessageCallback {
     private InBound inBound;
     private OutBound outBound;
@@ -36,6 +38,14 @@ public class Node implements IMessageCallback {
 
     @Override
     public void messageReceived(String msg) {
-        System.out.println(nodeId + " has received a msg: " + msg);
+        Message m = null;
+        try {
+            m = new Decoder().decodeJsonString(msg, Message.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if(m != null) {
+            System.out.println(nodeId + " has received a msg: " + m.toString());
+        }
     }
 }
