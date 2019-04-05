@@ -5,6 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
+/**
+ * Handles all connection operations of the in-Bound sub-component.
+ * It implements the {@link Runnable} interface in order to lend itself for usage in a {@link Thread}.
+ * This is necessary considering the possible use case of a node having to handle multiple in-bound requests/connections.
+ */
 public class ConnectionHandler implements Runnable {
     private final Socket socket;
     private final IMessageCallback callback;
